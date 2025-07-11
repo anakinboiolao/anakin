@@ -184,6 +184,7 @@
                 id: 'sheet_boi_caixaria',
                 title: 'Boi Caixaria',
                 type: 'boi_caixaria',
+                calculation_inputs: { icms_st: "6,05", despesa: "8,00", margem_lucro: "7,00" },
                 items: [
                     { id: 'boi_1', 'desc': 'MÚSCULO', 'cod': '175/5', 'precoPago': 25.49, 'precoVenda': 0 },
                     { id: 'boi_2', 'desc': 'CHÃ DE DENTRO', 'cod': '173/1', 'precoPago': 30.99, 'precoVenda': 0 },
@@ -252,8 +253,17 @@
                 tableContainer.innerHTML = buildSuinoItemsTable(sheet, totalCustoLiquido);
                 sheetContainer.appendChild(tableContainer);
             } else if (sheet.type === 'boi_caixaria') {
+                const boiCalc = document.createElement('div');
+                boiCalc.innerHTML = `
+                    <h3 class="text-lg font-semibold mb-2">Parâmetros de Cálculo da Caixaria</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 boi-calculator-inputs">
+                        ${buildCostInput('icms_st', 'ICMS ST (%)', sheet.calculation_inputs.icms_st)}
+                        ${buildCostInput('despesa', 'Despesa (%)', sheet.calculation_inputs.despesa)}
+                        ${buildCostInput('margem_lucro', 'Margem Lucro (%)', sheet.calculation_inputs.margem_lucro)}
+                    </div>`;
+                sheetContainer.appendChild(boiCalc);
                 const tableContainer = document.createElement('div');
-                tableContainer.className = "overflow-x-auto";
+                tableContainer.className = "overflow-x-auto mt-4";
                 tableContainer.innerHTML = buildBoiItemsTable(sheet);
                 sheetContainer.appendChild(tableContainer);
             }
@@ -319,7 +329,7 @@
             const tableRowsHTML = sheet.items.map(item => {
                 const precoPago = item.precoPago || 0;
                 const precoVenda = item.precoVenda || 0;
-                const precoFormula = (((precoPago * 0.0605) + precoPago) * 100 / 92) * 1.07;
+                const precoFormula = calculateBoiFormula(precoPago, sheet.calculation_inputs);
                 return `
                     <tr class="bg-white border-b hover:bg-stone-50">
                         <td class="px-4 py-3 font-medium text-stone-900 whitespace-nowrap">${item.desc}</td>
@@ -363,6 +373,18 @@
             const st_total = total_materia_prima * (st / 100.0);
             const custo_com_st = total_materia_prima + st_total;
             return (fat !== 0) ? (custo_com_st / fat) * 100.0 : 0;
+        };
+
+        const calculateBoiFormula = (precoPago, calcInputs) => {
+            const icms_st_percent = parseFloatBR(calcInputs.icms_st) / 100;
+            const despesa_percent = parseFloatBR(calcInputs.despesa);
+            const fator_despesa = 100 - despesa_percent;
+            const margem_lucro_multiplier = 1 + (parseFloatBR(calcInputs.margem_lucro) / 100);
+
+            const custoComIcms = precoPago * (1 + icms_st_percent);
+            const custoAjustadoRendimento = (fator_despesa > 0) ? (custoComIcms / fator_despesa) * 100 : 0;
+            
+            return custoAjustadoRendimento * margem_lucro_multiplier;
         };
 
         // --- Management Modals & Logic ---
@@ -554,7 +576,11 @@
                 if (!sheetDiv) return;
                 const sheet = appData.sheets.find(s => s.id === sheetDiv.dataset.sheetId);
                 if (!sheet) return;
-                if (e.target.classList.contains('cost-input')) { sheet.cost_inputs[e.target.dataset.key] = e.target.value; render(); }
+                if (e.target.classList.contains('cost-input')) {
+                    if(sheet.type === 'suino') sheet.cost_inputs[e.target.dataset.key] = e.target.value;
+                    if(sheet.type === 'boi_caixaria') sheet.calculation_inputs[e.target.dataset.key] = e.target.value;
+                    render();
+                }
                 const itemId = e.target.dataset.itemId;
                 if (!itemId) return;
                 const item = sheet.items.find(i => i.id === itemId);
@@ -566,13 +592,14 @@
 
             document.body.addEventListener('click', e => {
                 const sheetDiv = e.target.closest('[data-sheet-id]');
-                if (!sheetDiv) return;
-                const sheet = appData.sheets.find(s => s.id === sheetDiv.dataset.sheetId);
-                if (!sheet) return;
-                if (e.target.classList.contains('delete-sheet-btn')) { if (confirm(`Tem certeza que deseja excluir a ficha "${sheet.title}"?`)) { appData.sheets = appData.sheets.filter(s => s.id !== sheet.id); render(); } }
-                if (e.target.classList.contains('edit-sheet-title-btn')) { const newTitle = prompt("Digite o novo nome para a ficha:", sheet.title); if (newTitle) { sheet.title = newTitle; render(); } }
-                if (e.target.classList.contains('manage-sheet-cortes-btn')) { openCorteManager(sheet); }
-                if (e.target.classList.contains('link-peso-btn')) { openLinkWeightsModal(sheet, e.target.dataset.itemId); }
+                if (sheetDiv) {
+                    const sheet = appData.sheets.find(s => s.id === sheetDiv.dataset.sheetId);
+                    if (!sheet) return;
+                    if (e.target.classList.contains('delete-sheet-btn')) { if (confirm(`Tem certeza que deseja excluir a ficha "${sheet.title}"?`)) { appData.sheets = appData.sheets.filter(s => s.id !== sheet.id); render(); } }
+                    if (e.target.classList.contains('edit-sheet-title-btn')) { const newTitle = prompt("Digite o novo nome para a ficha:", sheet.title); if (newTitle) { sheet.title = newTitle; render(); } }
+                    if (e.target.classList.contains('manage-sheet-cortes-btn')) { openCorteManager(sheet); }
+                    if (e.target.classList.contains('link-peso-btn')) { openLinkWeightsModal(sheet, e.target.dataset.itemId); }
+                }
             });
         }
 
