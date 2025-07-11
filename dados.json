@@ -45,7 +45,7 @@
           "linkedPesoKeys": [
             "P√Å COM OSSO E TOUCINHO"
           ],
-          "prUnit": 11.99
+          "prUnit": 12
         },
         {
           "id": "item_m1_2",
@@ -244,6 +244,198 @@
           "cod": "944/7",
           "precoPago": 31.99,
           "precoVenda": 0
+        }
+      ]
+    },
+    {
+      "id": "sheet_modelo_1",
+      "title": "Modelo 1 (SuÌno)",
+      "type": "suino",
+      "cost_inputs": {
+        "peso_materia_prima": "100,000",
+        "preco_unit_materia_prima": "10,00",
+        "st_percent": "6,05",
+        "fator_rendimento": "92,00"
+      },
+      "items": [
+        {
+          "id": "item_m1_1",
+          "desc": "P¡ COM OSSO E TOUCINHO",
+          "cod": "1366/6",
+          "linkedPesoKeys": [
+            "P¡ COM OSSO E TOUCINHO"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m1_2",
+          "desc": "CARR… COM OSSO E TOUCINHO",
+          "cod": "913/3",
+          "linkedPesoKeys": [
+            "CARR… COM OSSO E TOUCINHO"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m1_3",
+          "desc": "PERNIL LIMPO",
+          "cod": "196/0",
+          "linkedPesoKeys": [
+            "PERNIL SEM OSSO"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m1_4",
+          "desc": "COSTELINHA SUÕNA LIMPA",
+          "cod": "199/1",
+          "linkedPesoKeys": [
+            "COSTELINHA SEM TOUCINHO"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m1_5",
+          "desc": "CABE«A",
+          "cod": "209/4",
+          "linkedPesoKeys": [
+            "CABE«A SEM PAPADA"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m1_6",
+          "desc": "P… COM JOELHO",
+          "cod": "208/0",
+          "linkedPesoKeys": [
+            "P… COM JOELHO"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m1_7",
+          "desc": "ORELHA COM PAPADA",
+          "cod": "67990/9",
+          "linkedPesoKeys": [
+            "ORELHA COM PAPADA"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m1_8",
+          "desc": "BARRIGUINHA",
+          "cod": "1367/3",
+          "linkedPesoKeys": [
+            "BARRIGUINHA"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m1_9",
+          "desc": "TOUCINHO",
+          "cod": "201/1",
+          "linkedPesoKeys": [
+            "TOUCINHO DO CARR…",
+            "TOUCINHO DO PERNIL",
+            "TOUCINHO DA COSTELINHA"
+          ],
+          "prUnit": 0
+        }
+      ]
+    },
+    {
+      "id": "sheet_modelo_2",
+      "title": "Modelo 2 (SuÌno)",
+      "type": "suino",
+      "cost_inputs": {
+        "peso_materia_prima": "100,000",
+        "preco_unit_materia_prima": "10,00",
+        "st_percent": "6,05",
+        "fator_rendimento": "92,00"
+      },
+      "items": [
+        {
+          "id": "item_m2_1",
+          "desc": "P¡ COM OSSO E TOUCINHO",
+          "cod": "1366/6",
+          "linkedPesoKeys": [
+            "P¡ COM OSSO E TOUCINHO"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m2_2",
+          "desc": "CARR… COM OSSO E TOUCINHO",
+          "cod": "913/3",
+          "linkedPesoKeys": [
+            "CARR… COM OSSO E TOUCINHO"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m2_3",
+          "desc": "PERNIL COM OSSO E TOUCINHO",
+          "cod": "1819/7",
+          "linkedPesoKeys": [
+            "PERNIL COM OSSO E TOUCINHO"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m2_4",
+          "desc": "COSTELINHA SUÕNA LIMPA",
+          "cod": "199/1",
+          "linkedPesoKeys": [
+            "COSTELINHA SEM TOUCINHO"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m2_5",
+          "desc": "CABE«A",
+          "cod": "209/4",
+          "linkedPesoKeys": [
+            "CABE«A SEM PAPADA"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m2_6",
+          "desc": "P… COM JOELHO",
+          "cod": "208/0",
+          "linkedPesoKeys": [
+            "P… COM JOELHO"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m2_7",
+          "desc": "ORELHA COM PAPADA",
+          "cod": "67990/9",
+          "linkedPesoKeys": [
+            "ORELHA COM PAPADA"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m2_8",
+          "desc": "BARRIGUINHA",
+          "cod": "1367/3",
+          "linkedPesoKeys": [
+            "BARRIGUINHA"
+          ],
+          "prUnit": 0
+        },
+        {
+          "id": "item_m2_9",
+          "desc": "TOUCINHO DA COSTELINHA",
+          "cod": "201/1c",
+          "linkedPesoKeys": [
+            "TOUCINHO DO CARR…",
+            "TOUCINHO DO PERNIL",
+            "TOUCINHO DA COSTELINHA"
+          ],
+          "prUnit": 0
         }
       ]
     }
