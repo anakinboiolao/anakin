@@ -585,7 +585,13 @@
                     const sheet = appData.sheets.find(s => s.id === sheetDiv.dataset.sheetId);
                     if (!sheet) return;
                     if (e.target.classList.contains('delete-sheet-btn')) { if (confirm(`Tem certeza que deseja excluir a ficha "${sheet.title}"?`)) { appData.sheets = appData.sheets.filter(s => s.id !== sheet.id); render(); } }
-                    if (e.target.classList.contains('edit-sheet-title-btn')) { const newTitle = prompt("Digite o novo nome para a ficha:", sheet.title); if (newTitle) { sheet.title = newTitle; render(); } }
+                    if (e.target.classList.contains('edit-sheet-title-btn')) { 
+                        const newTitle = prompt("Digite o novo nome para a ficha:", sheet.title); 
+                        if (newTitle && newTitle.trim() !== '') { 
+                            sheet.title = newTitle.trim(); 
+                            render(); 
+                        } 
+                    }
                     if (e.target.classList.contains('manage-sheet-cortes-btn')) { openCorteManager(sheet); }
                     if (e.target.classList.contains('link-peso-btn')) { openLinkWeightsModal(sheet, e.target.dataset.itemId); }
                 }
