@@ -63,7 +63,7 @@
           "linkedPesoKeys": [
             "PERNIL SEM OSSO"
           ],
-          "prUnit": 0
+          "prUnit": 10
         },
         {
           "id": "item_m1_4",
@@ -72,7 +72,7 @@
           "linkedPesoKeys": [
             "COSTELINHA SEM TOUCINHO"
           ],
-          "prUnit": 0
+          "prUnit": 20
         },
         {
           "id": "item_m1_5",
@@ -81,7 +81,7 @@
           "linkedPesoKeys": [
             "CABEÃ‡A SEM PAPADA"
           ],
-          "prUnit": 0
+          "prUnit": 30
         },
         {
           "id": "item_m1_6",
