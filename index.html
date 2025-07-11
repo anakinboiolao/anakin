@@ -372,8 +372,23 @@
                     <input class="col-span-2 px-2 py-1 border rounded" data-original-key="${key}" value="${key}">
                     <input type="text" class="px-2 py-1 border rounded text-right" value="${String(value).replace('.',',')}">
                 </div>`).join('');
-            const content = `<h2 class="text-xl font-bold mb-4">Gerenciar Pesos (Balanço)</h2><div id="peso-list">${pesoRows}</div><div class="flex justify-between mt-4"><button id="add-peso-btn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Adicionar Peso</button><div><button onclick="hideModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 mr-2">Cancelar</button><button id="save-pesos-btn" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Salvar</button></div></div>`;
+            const content = `<h2 class="text-xl font-bold mb-4">Gerenciar Pesos (Balanço)</h2><div id="peso-list">${pesoRows}</div><div class="flex justify-between mt-4"><button id="add-peso-btn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Adicionar Peso</button><div><button id="cancel-pesos-btn" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 mr-2">Cancelar</button><button id="save-pesos-btn" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Salvar</button></div></div>`;
             showModal(content);
+
+            modalContent.querySelector('#add-peso-btn').addEventListener('click', () => {
+                modalContent.querySelector('#peso-list').insertAdjacentHTML('beforeend', `<div class="grid grid-cols-3 gap-2 items-center mb-2 peso-row"><input class="col-span-2 px-2 py-1 border rounded" placeholder="Nome do Novo Peso"><input type="text" class="px-2 py-1 border rounded text-right" value="0,000"></div>`);
+            });
+            modalContent.querySelector('#save-pesos-btn').addEventListener('click', () => {
+                const newPesos = {};
+                modalContent.querySelectorAll('.peso-row').forEach(row => {
+                    const key = row.children[0].value.trim();
+                    if (key) newPesos[key] = parseFloatBR(row.children[1].value);
+                });
+                appData.pesos_carnes = newPesos;
+                hideModal();
+                render();
+            });
+            modalContent.querySelector('#cancel-pesos-btn').addEventListener('click', hideModal);
         };
         
         const openCorteManager = (sheet) => {
@@ -394,10 +409,11 @@
                 <table class="w-full text-left text-sm"><thead><tr>${headers}<th>Ações</th></tr></thead><tbody>${rows}</tbody></table>
                 <div class="flex justify-between mt-4">
                     <button class="add-corte-btn mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Adicionar Corte</button>
-                    <button onclick="hideModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Fechar</button>
+                    <button id="close-corte-manager-btn" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Fechar</button>
                 </div>`;
             showModal(content);
             
+            modalContent.querySelector('#close-corte-manager-btn').addEventListener('click', hideModal);
             modalContent.querySelector('.add-corte-btn').onclick = () => openCorteEditor(sheet, -1);
             modalContent.querySelectorAll('.edit-corte-btn').forEach(btn => btn.onclick = () => openCorteEditor(sheet, parseInt(btn.dataset.index)));
             modalContent.querySelectorAll('.delete-corte-btn').forEach(btn => btn.onclick = () => {
@@ -455,8 +471,9 @@
             if (!item) return;
             const linkedKeys = new Set(item.linkedPesoKeys || []);
             const pesoCheckboxes = Object.keys(appData.pesos_carnes).sort().map(key => `<label class="block"><input type="checkbox" class="mr-2" value="${key}" ${linkedKeys.has(key) ? 'checked' : ''}>${key}</label>`).join('');
-            const content = `<h2 class="text-xl font-bold mb-4">Vincular Pesos para: ${item.desc}</h2><div id="link-peso-list" class="space-y-1">${pesoCheckboxes}</div><div class="flex justify-end mt-4"><button onclick="hideModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 mr-2">Cancelar</button><button id="save-linked-pesos-btn" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Salvar</button></div>`;
+            const content = `<h2 class="text-xl font-bold mb-4">Vincular Pesos para: ${item.desc}</h2><div id="link-peso-list" class="space-y-1">${pesoCheckboxes}</div><div class="flex justify-end mt-4"><button id="cancel-link-weights-btn" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 mr-2">Cancelar</button><button id="save-linked-pesos-btn" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Salvar</button></div>`;
             showModal(content);
+            document.getElementById('cancel-link-weights-btn').addEventListener('click', hideModal);
             document.getElementById('save-linked-pesos-btn').onclick = () => {
                 item.linkedPesoKeys = Array.from(document.querySelectorAll('#link-peso-list input:checked')).map(cb => cb.value);
                 hideModal();
@@ -471,7 +488,7 @@
                     <input type="text" id="new-sheet-title" class="mt-1 block w-full px-3 py-2 border border-stone-300 rounded-md shadow-sm" value="Nova Ficha Suína">
                 </div>
                 <div class="flex justify-end mt-4">
-                    <button onclick="hideModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 mr-2">Cancelar</button>
+                    <button id="cancel-add-sheet-btn" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 mr-2">Cancelar</button>
                     <button id="confirm-add-sheet-btn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Adicionar</button>
                 </div>`;
             showModal(content);
@@ -483,6 +500,7 @@
                     render();
                 }
             };
+            document.getElementById('cancel-add-sheet-btn').addEventListener('click', hideModal);
         };
 
         // --- Initial Load & Event Listeners ---
@@ -547,8 +565,6 @@
             });
 
             document.body.addEventListener('click', e => {
-                if (e.target.id === 'add-peso-btn') { document.getElementById('peso-list').insertAdjacentHTML('beforeend', `<div class="grid grid-cols-3 gap-2 items-center mb-2 peso-row"><input class="col-span-2 px-2 py-1 border rounded" placeholder="Nome do Novo Peso"><input type="text" class="px-2 py-1 border rounded text-right" value="0,000"></div>`); }
-                if (e.target.id === 'save-pesos-btn') { const newPesos = {}; document.querySelectorAll('.peso-row').forEach(row => { const key = row.children[0].value.trim(); if (key) newPesos[key] = parseFloatBR(row.children[1].value); }); appData.pesos_carnes = newPesos; hideModal(); render(); }
                 const sheetDiv = e.target.closest('[data-sheet-id]');
                 if (!sheetDiv) return;
                 const sheet = appData.sheets.find(s => s.id === sheetDiv.dataset.sheetId);
