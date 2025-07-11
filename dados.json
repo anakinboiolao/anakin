@@ -32,8 +32,8 @@
       "title": "Suino",
       "type": "suino",
       "cost_inputs": {
-        "peso_materia_prima": "100,000",
-        "preco_unit_materia_prima": "10,00",
+        "peso_materia_prima": "47",
+        "preco_unit_materia_prima": "12",
         "st_percent": "6,05",
         "fator_rendimento": "92,00"
       },
@@ -216,6 +216,22 @@
             "TOUCINHO DA COSTELINHA"
           ],
           "prUnit": 10
+        },
+        {
+          "id": "item_1752262285008",
+          "desc": "Ananki gay",
+          "cod": "99999",
+          "prUnit": 10,
+          "precoPago": 0,
+          "precoVenda": 0,
+          "linkedPesoKeys": [
+            "BARRIGUINHA",
+            "CABEÃ‡A COMPLETA COM PA",
+            "CABEÃ‡A SEM PAPADA",
+            "CARRÃ‰ COM OSSO E TOUCINHO",
+            "CARRÃ‰ SEM OSSO LOMBO",
+            "CARRÃ‰ SUJO"
+          ]
         }
       ]
     },
