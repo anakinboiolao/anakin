@@ -141,7 +141,7 @@
           "linkedPesoKeys": [
             "PÃ COM OSSO E TOUCINHO"
           ],
-          "prUnit": 0
+          "prUnit": 10
         },
         {
           "id": "item_m2_2",
@@ -150,7 +150,7 @@
           "linkedPesoKeys": [
             "CARRÃ‰ COM OSSO E TOUCINHO"
           ],
-          "prUnit": 0
+          "prUnit": 10
         },
         {
           "id": "item_m2_3",
@@ -159,7 +159,7 @@
           "linkedPesoKeys": [
             "PERNIL COM OSSO E TOUCINHO"
           ],
-          "prUnit": 0
+          "prUnit": 10
         },
         {
           "id": "item_m2_4",
@@ -168,7 +168,7 @@
           "linkedPesoKeys": [
             "COSTELINHA SEM TOUCINHO"
           ],
-          "prUnit": 0
+          "prUnit": 10
         },
         {
           "id": "item_m2_5",
@@ -177,7 +177,7 @@
           "linkedPesoKeys": [
             "CABEÃ‡A SEM PAPADA"
           ],
-          "prUnit": 0
+          "prUnit": 10
         },
         {
           "id": "item_m2_6",
@@ -186,7 +186,7 @@
           "linkedPesoKeys": [
             "PÃ‰ COM JOELHO"
           ],
-          "prUnit": 0
+          "prUnit": 10
         },
         {
           "id": "item_m2_7",
@@ -195,7 +195,7 @@
           "linkedPesoKeys": [
             "ORELHA COM PAPADA"
           ],
-          "prUnit": 0
+          "prUnit": 10
         },
         {
           "id": "item_m2_8",
@@ -204,7 +204,7 @@
           "linkedPesoKeys": [
             "BARRIGUINHA"
           ],
-          "prUnit": 0
+          "prUnit": 10
         },
         {
           "id": "item_m2_9",
@@ -215,7 +215,7 @@
             "TOUCINHO DO PERNIL",
             "TOUCINHO DA COSTELINHA"
           ],
-          "prUnit": 0
+          "prUnit": 10
         }
       ]
     },
