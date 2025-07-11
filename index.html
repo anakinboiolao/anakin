@@ -79,7 +79,7 @@
             <div class="flex items-center space-x-2">
                  <div id="status-indicator" class="text-sm text-gray-500 mr-4"></div>
                 <button id="manage-pesos-btn" class="px-3 py-2 bg-gray-200 text-gray-800 font-semibold rounded-md hover:bg-gray-300 text-sm">Gerenciar Pesos</button>
-                <button id="save-button" class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 shadow-sm">Salvar no GitHub</button>
+                <button id="save-button" class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 shadow-sm transition-colors duration-300">Salvar no GitHub</button>
             </div>
         </header>
 
@@ -105,24 +105,50 @@
 
 
     <script type="module">
+        // --- State Management ---
+        let appData = { pesos_carnes: {}, sheets: [] };
+        let githubConfig = { user: '', repo: '', token: '', fileSha: null };
+        let hasUnsavedChanges = false;
+
         // --- GitHub API Logic ---
         const GITHUB_API_URL = 'https://api.github.com';
         const DATA_FILE_PATH = 'dados.json';
-        let githubConfig = { user: '', repo: '', token: '', fileSha: null };
         const statusIndicator = document.getElementById('status-indicator');
-        const setStatus = (message, isError = false) => {
+        const saveButton = document.getElementById('save-button');
+
+        const setStatus = (message, isError = false, duration = 0) => {
             statusIndicator.textContent = message;
             statusIndicator.className = isError ? 'text-sm text-red-500' : 'text-sm text-gray-500';
+            if (duration > 0) {
+                setTimeout(() => {
+                    if (statusIndicator.textContent === message) {
+                        statusIndicator.textContent = 'Pronto';
+                    }
+                }, duration);
+            }
         };
 
-        // Helper functions for UTF-8 encoding/decoding
-        const utf8_to_b64 = (str) => {
-            return btoa(unescape(encodeURIComponent(str)));
-        }
+        const updateSaveButtonUI = () => {
+            if (hasUnsavedChanges) {
+                saveButton.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                saveButton.classList.add('bg-orange-500', 'hover:bg-orange-600', 'animate-pulse');
+                saveButton.textContent = 'Salvar Alterações*';
+            } else {
+                saveButton.classList.remove('bg-orange-500', 'hover:bg-orange-600', 'animate-pulse');
+                saveButton.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                saveButton.textContent = 'Salvar no GitHub';
+            }
+        };
+        
+        const markAsDirty = () => {
+            if (!hasUnsavedChanges) {
+                hasUnsavedChanges = true;
+                updateSaveButtonUI();
+            }
+        };
 
-        const b64_to_utf8 = (str) => {
-            return decodeURIComponent(escape(atob(str)));
-        }
+        const utf8_to_b64 = (str) => btoa(unescape(encodeURIComponent(str)));
+        const b64_to_utf8 = (str) => decodeURIComponent(escape(atob(str)));
 
         async function loadDataFromGitHub() {
             setStatus('Carregando dados do GitHub...');
@@ -139,7 +165,7 @@
                 const data = await response.json();
                 githubConfig.fileSha = data.sha;
                 setStatus('Dados carregados com sucesso!');
-                return JSON.parse(b64_to_utf8(data.content)); // Decode Base64 content with UTF-8
+                return JSON.parse(b64_to_utf8(data.content));
             } catch (error) {
                 console.error('Falha ao carregar dados do GitHub:', error);
                 setStatus(`Erro ao carregar: ${error.message}`, true);
@@ -149,7 +175,7 @@
         async function saveDataToGitHub() {
             setStatus('Salvando no GitHub...');
             const { user, repo, token, fileSha } = githubConfig;
-            const content = utf8_to_b64(JSON.stringify(appData, null, 2)); // Encode to Base64 with UTF-8
+            const content = utf8_to_b64(JSON.stringify(appData, null, 2));
             const body = {
                 message: `Atualização de dados da calculadora - ${new Date().toISOString()}`,
                 content: content,
@@ -164,7 +190,9 @@
                 if (!response.ok) throw new Error(`Erro na rede: ${response.statusText}`);
                 const result = await response.json();
                 githubConfig.fileSha = result.content.sha;
-                setStatus('Salvo com sucesso!');
+                hasUnsavedChanges = false;
+                updateSaveButtonUI();
+                setStatus('Salvo no GitHub com sucesso!', false, 3000);
                 alert('Dados salvos com sucesso no seu repositório do GitHub!');
             } catch (error) {
                 console.error('Falha ao salvar no GitHub:', error);
@@ -220,8 +248,6 @@
                 ]
             }
         ];
-
-        let appData = { pesos_carnes: {}, sheets: [] };
         
         // --- Utility Functions ---
         const formatCurrency = (value) => `R$ ${Number(value).toFixed(2).replace('.', ',')}`;
@@ -242,6 +268,7 @@
             appData.sheets.forEach(sheet => {
                 sheetsContainer.appendChild(buildSheetElement(sheet));
             });
+            markAsDirty();
         };
 
         // --- Element Builders ---
@@ -621,6 +648,8 @@
                 githubSettingsModal.classList.add('hidden');
                 document.getElementById('app-container').classList.remove('hidden');
                 render();
+                hasUnsavedChanges = false;
+                updateSaveButtonUI();
             });
             
             // Main App Event Listeners
