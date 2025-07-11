@@ -1,19 +1,19 @@
 {
   "pesos_carnes": {
-    "CABE«A COMPLETA COM PA": 2.85,
-    "CABE«A SEM PAPADA": 1.7,
-    "P… COM JOELHO": 2.55,
-    "P…": 1.05,
+    "CABE√áA COMPLETA COM PA": 2.85,
+    "CABE√áA SEM PAPADA": 1.7,
+    "P√â COM JOELHO": 2.55,
+    "P√â": 1.05,
     "JOELHO": 1.5,
     "ORELHA": 0.25,
     "ORELHA COM PAPADA": 1.15,
     "PAPADA": 0.9,
-    "P¡ COM OSSO E TOUCINHO": 12.1,
-    "P¡ SEM OSSO": 8.2,
-    "CARR… COM OSSO E TOUCINHO": 6.55,
-    "TOUCINHO DO CARR…": 0.85,
-    "OSSO DO CARR…": 1.45,
-    "CARR… SEM OSSO LOMBO": 3.4,
+    "P√Å COM OSSO E TOUCINHO": 12.1,
+    "P√Å SEM OSSO": 8.2,
+    "CARR√â COM OSSO E TOUCINHO": 6.55,
+    "TOUCINHO DO CARR√â": 0.85,
+    "OSSO DO CARR√â": 1.45,
+    "CARR√â SEM OSSO LOMBO": 3.4,
     "PERNIL COM OSSO E TOUCINHO": 12.6,
     "TOUCINHO DO PERNIL": 1.05,
     "PERNIL SEM OSSO": 10.05,
@@ -22,24 +22,24 @@
     "COSTELINHA SEM TOUCINHO": 6,
     "BARRIGUINHA": 2.55,
     "PERNIL SUJO": 11.185,
-    "P¡ SUJA": 10.275,
-    "CARR… SUJO": 7.3,
+    "P√Å SUJA": 10.275,
+    "CARR√â SUJO": 7.3,
     "LOMBO LIMPO": 3.55
   },
   "itens_database": {
     "modelo1": [
       {
-        "desc": "P¡ COM OSSO E TOUCINHO",
+        "desc": "P√Å COM OSSO E TOUCINHO",
         "cod": "1366/6",
         "linkedPesoKeys": [
-          "P¡ COM OSSO E TOUCINHO"
+          "P√Å COM OSSO E TOUCINHO"
         ]
       },
       {
-        "desc": "CARR… COM OSSO E TOUCINHO",
+        "desc": "CARR√â COM OSSO E TOUCINHO",
         "cod": "913/3",
         "linkedPesoKeys": [
-          "CARR… COM OSSO E TOUCINHO"
+          "CARR√â COM OSSO E TOUCINHO"
         ]
       },
       {
@@ -50,24 +50,24 @@
         ]
       },
       {
-        "desc": "COSTELINHA SUÕNA LIMPA",
+        "desc": "COSTELINHA SU√çNA LIMPA",
         "cod": "199/1",
         "linkedPesoKeys": [
           "COSTELINHA SEM TOUCINHO"
         ]
       },
       {
-        "desc": "CABE«A",
+        "desc": "CABE√áA",
         "cod": "209/4",
         "linkedPesoKeys": [
-          "CABE«A SEM PAPADA"
+          "CABE√áA SEM PAPADA"
         ]
       },
       {
-        "desc": "P… COM JOELHO",
+        "desc": "P√â COM JOELHO",
         "cod": "208/0",
         "linkedPesoKeys": [
-          "P… COM JOELHO"
+          "P√â COM JOELHO"
         ]
       },
       {
@@ -88,7 +88,7 @@
         "desc": "TOUCINHO",
         "cod": "201/1",
         "linkedPesoKeys": [
-          "TOUCINHO DO CARR…",
+          "TOUCINHO DO CARR√â",
           "TOUCINHO DO PERNIL",
           "TOUCINHO DA COSTELINHA"
         ]
@@ -96,17 +96,17 @@
     ],
     "modelo2": [
       {
-        "desc": "P¡ COM OSSO E TOUCINHO",
+        "desc": "P√Å COM OSSO E TOUCINHO",
         "cod": "1366/6",
         "linkedPesoKeys": [
-          "P¡ COM OSSO E TOUCINHO"
+          "P√Å COM OSSO E TOUCINHO"
         ]
       },
       {
-        "desc": "CARR… COM OSSO E TOUCINHO",
+        "desc": "CARR√â COM OSSO E TOUCINHO",
         "cod": "913/3",
         "linkedPesoKeys": [
-          "CARR… COM OSSO E TOUCINHO"
+          "CARR√â COM OSSO E TOUCINHO"
         ]
       },
       {
@@ -117,24 +117,24 @@
         ]
       },
       {
-        "desc": "COSTELINHA SUÕNA LIMPA",
+        "desc": "COSTELINHA SU√çNA LIMPA",
         "cod": "199/1",
         "linkedPesoKeys": [
           "COSTELINHA SEM TOUCINHO"
         ]
       },
       {
-        "desc": "CABE«A",
+        "desc": "CABE√áA",
         "cod": "209/4",
         "linkedPesoKeys": [
-          "CABE«A SEM PAPADA"
+          "CABE√áA SEM PAPADA"
         ]
       },
       {
-        "desc": "P… COM JOELHO",
+        "desc": "P√â COM JOELHO",
         "cod": "208/0",
         "linkedPesoKeys": [
-          "P… COM JOELHO"
+          "P√â COM JOELHO"
         ]
       },
       {
@@ -155,7 +155,7 @@
         "desc": "TOUCINHO DA COSTELINHA",
         "cod": "201/1c",
         "linkedPesoKeys": [
-          "TOUCINHO DO CARR…",
+          "TOUCINHO DO CARR√â",
           "TOUCINHO DO PERNIL",
           "TOUCINHO DA COSTELINHA"
         ]
@@ -163,12 +163,12 @@
     ],
     "boi": [
       {
-        "desc": "M⁄SCULO",
+        "desc": "M√öSCULO",
         "cod": "175/5",
         "precoPago": 25.49
       },
       {
-        "desc": "CH√ DE DENTRO",
+        "desc": "CH√É DE DENTRO",
         "cod": "173/1",
         "precoPago": 30.99
       },
@@ -184,7 +184,7 @@
       "prUnit": 2222220
     },
     "913-3": {
-      "prUnit": 0
+      "prUnit": 999
     },
     "196-0": {
       "prUnit": 0
