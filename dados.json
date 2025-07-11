@@ -1,19 +1,19 @@
 {
   "pesos_carnes": {
-    "CABE«A COMPLETA COM PA": 2.85,
-    "CABE«A SEM PAPADA": 1.7,
-    "P… COM JOELHO": 2.55,
-    "P…": 1.05,
+    "CABE√áA COMPLETA COM PA": 2.85,
+    "CABE√áA SEM PAPADA": 1.7,
+    "P√â COM JOELHO": 2.55,
+    "P√â": 1.05,
     "JOELHO": 1.5,
     "ORELHA": 0.25,
     "ORELHA COM PAPADA": 1.15,
     "PAPADA": 0.9,
-    "P¡ COM OSSO E TOUCINHO": 12.1,
-    "P¡ SEM OSSO": 8.2,
-    "CARR… COM OSSO E TOUCINHO": 6.55,
-    "TOUCINHO DO CARR…": 0.85,
-    "OSSO DO CARR…": 1.45,
-    "CARR… SEM OSSO LOMBO": 3.4,
+    "P√Å COM OSSO E TOUCINHO": 12.1,
+    "P√Å SEM OSSO": 8.2,
+    "CARR√â COM OSSO E TOUCINHO": 6.55,
+    "TOUCINHO DO CARR√â": 0.85,
+    "OSSO DO CARR√â": 1.45,
+    "CARR√â SEM OSSO LOMBO": 3.4,
     "PERNIL COM OSSO E TOUCINHO": 12.6,
     "TOUCINHO DO PERNIL": 1.05,
     "PERNIL SEM OSSO": 10.05,
@@ -22,14 +22,14 @@
     "COSTELINHA SEM TOUCINHO": 6,
     "BARRIGUINHA": 2.55,
     "PERNIL SUJO": 11.185,
-    "P¡ SUJA": 10.275,
-    "CARR… SUJO": 7.3,
+    "P√Å SUJA": 10.275,
+    "CARR√â SUJO": 7.3,
     "LOMBO LIMPO": 3.55
   },
   "sheets": [
     {
       "id": "sheet_1752255490459_0.1755712677619602",
-      "title": "Modelo 1 (SuÌno)",
+      "title": "Modelo 1 (Su√≠no)",
       "type": "suino",
       "cost_inputs": {
         "peso_materia_prima": "100,000",
@@ -40,19 +40,19 @@
       "items": [
         {
           "id": "item_m1_1",
-          "desc": "P¡ COM OSSO E TOUCINHO",
+          "desc": "P√Å COM OSSO E TOUCINHO",
           "cod": "1366/6",
           "linkedPesoKeys": [
-            "P¡ COM OSSO E TOUCINHO"
+            "P√Å COM OSSO E TOUCINHO"
           ],
           "prUnit": 11.99
         },
         {
           "id": "item_m1_2",
-          "desc": "CARR… COM OSSO E TOUCINHO",
+          "desc": "CARR√â COM OSSO E TOUCINHO",
           "cod": "913/3",
           "linkedPesoKeys": [
-            "CARR… COM OSSO E TOUCINHO"
+            "CARR√â COM OSSO E TOUCINHO"
           ],
           "prUnit": 0
         },
@@ -67,7 +67,7 @@
         },
         {
           "id": "item_m1_4",
-          "desc": "COSTELINHA SUÕNA LIMPA",
+          "desc": "COSTELINHA SU√çNA LIMPA",
           "cod": "199/1",
           "linkedPesoKeys": [
             "COSTELINHA SEM TOUCINHO"
@@ -76,19 +76,19 @@
         },
         {
           "id": "item_m1_5",
-          "desc": "CABE«A",
+          "desc": "CABE√áA",
           "cod": "209/4",
           "linkedPesoKeys": [
-            "CABE«A SEM PAPADA"
+            "CABE√áA SEM PAPADA"
           ],
           "prUnit": 0
         },
         {
           "id": "item_m1_6",
-          "desc": "P… COM JOELHO",
+          "desc": "P√â COM JOELHO",
           "cod": "208/0",
           "linkedPesoKeys": [
-            "P… COM JOELHO"
+            "P√â COM JOELHO"
           ],
           "prUnit": 0
         },
@@ -115,7 +115,7 @@
           "desc": "TOUCINHO",
           "cod": "201/1",
           "linkedPesoKeys": [
-            "TOUCINHO DO CARR…",
+            "TOUCINHO DO CARR√â",
             "TOUCINHO DO PERNIL",
             "TOUCINHO DA COSTELINHA"
           ],
@@ -125,7 +125,7 @@
     },
     {
       "id": "sheet_1752255490459_0.7973428803739071",
-      "title": "Modelo 2 (SuÌno)",
+      "title": "Modelo 2 (Su√≠no)",
       "type": "suino",
       "cost_inputs": {
         "peso_materia_prima": "100,000",
@@ -136,19 +136,19 @@
       "items": [
         {
           "id": "item_m2_1",
-          "desc": "P¡ COM OSSO E TOUCINHO",
+          "desc": "P√Å COM OSSO E TOUCINHO",
           "cod": "1366/6",
           "linkedPesoKeys": [
-            "P¡ COM OSSO E TOUCINHO"
+            "P√Å COM OSSO E TOUCINHO"
           ],
           "prUnit": 0
         },
         {
           "id": "item_m2_2",
-          "desc": "CARR… COM OSSO E TOUCINHO",
+          "desc": "CARR√â COM OSSO E TOUCINHO",
           "cod": "913/3",
           "linkedPesoKeys": [
-            "CARR… COM OSSO E TOUCINHO"
+            "CARR√â COM OSSO E TOUCINHO"
           ],
           "prUnit": 0
         },
@@ -163,7 +163,7 @@
         },
         {
           "id": "item_m2_4",
-          "desc": "COSTELINHA SUÕNA LIMPA",
+          "desc": "COSTELINHA SU√çNA LIMPA",
           "cod": "199/1",
           "linkedPesoKeys": [
             "COSTELINHA SEM TOUCINHO"
@@ -172,19 +172,19 @@
         },
         {
           "id": "item_m2_5",
-          "desc": "CABE«A",
+          "desc": "CABE√áA",
           "cod": "209/4",
           "linkedPesoKeys": [
-            "CABE«A SEM PAPADA"
+            "CABE√áA SEM PAPADA"
           ],
           "prUnit": 0
         },
         {
           "id": "item_m2_6",
-          "desc": "P… COM JOELHO",
+          "desc": "P√â COM JOELHO",
           "cod": "208/0",
           "linkedPesoKeys": [
-            "P… COM JOELHO"
+            "P√â COM JOELHO"
           ],
           "prUnit": 0
         },
@@ -211,7 +211,7 @@
           "desc": "TOUCINHO DA COSTELINHA",
           "cod": "201/1c",
           "linkedPesoKeys": [
-            "TOUCINHO DO CARR…",
+            "TOUCINHO DO CARR√â",
             "TOUCINHO DO PERNIL",
             "TOUCINHO DA COSTELINHA"
           ],
@@ -226,14 +226,14 @@
       "items": [
         {
           "id": "boi_1",
-          "desc": "M⁄SCULO",
+          "desc": "M√öSCULO",
           "cod": "175/5",
           "precoPago": 25.49,
           "precoVenda": 0
         },
         {
           "id": "boi_2",
-          "desc": "CH√ DE DENTRO",
+          "desc": "CH√É DE DENTRO",
           "cod": "173/1",
           "precoPago": 30.99,
           "precoVenda": 0
