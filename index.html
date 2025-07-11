@@ -22,13 +22,12 @@
         .hidden { display: none !important; }
 
         @media print {
-            body * {
-                visibility: hidden;
-            }
-            #printable-report-container, #printable-report-container * {
-                visibility: visible;
+            body.is-printing > *:not(#printable-report-container) {
+                display: none;
             }
             #printable-report-container {
+                display: block !important;
+                visibility: visible !important;
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -115,6 +114,16 @@
             statusIndicator.textContent = message;
             statusIndicator.className = isError ? 'text-sm text-red-500' : 'text-sm text-gray-500';
         };
+
+        // Helper functions for UTF-8 encoding/decoding
+        const utf8_to_b64 = (str) => {
+            return btoa(unescape(encodeURIComponent(str)));
+        }
+
+        const b64_to_utf8 = (str) => {
+            return decodeURIComponent(escape(atob(str)));
+        }
+
         async function loadDataFromGitHub() {
             setStatus('Carregando dados do GitHub...');
             const { user, repo, token } = githubConfig;
@@ -130,7 +139,7 @@
                 const data = await response.json();
                 githubConfig.fileSha = data.sha;
                 setStatus('Dados carregados com sucesso!');
-                return JSON.parse(atob(data.content));
+                return JSON.parse(b64_to_utf8(data.content)); // Decode Base64 content with UTF-8
             } catch (error) {
                 console.error('Falha ao carregar dados do GitHub:', error);
                 setStatus(`Erro ao carregar: ${error.message}`, true);
@@ -140,7 +149,7 @@
         async function saveDataToGitHub() {
             setStatus('Salvando no GitHub...');
             const { user, repo, token, fileSha } = githubConfig;
-            const content = btoa(JSON.stringify(appData, null, 2));
+            const content = utf8_to_b64(JSON.stringify(appData, null, 2)); // Encode to Base64 with UTF-8
             const body = {
                 message: `Atualização de dados da calculadora - ${new Date().toISOString()}`,
                 content: content,
@@ -644,7 +653,9 @@
                     hideModal();
                 }
                 if (e.target.id === 'print-report-btn') {
+                    document.body.classList.add('is-printing');
                     window.print();
+                    document.body.classList.remove('is-printing');
                 }
 
                 const sheetDiv = e.target.closest('[data-sheet-id]');
